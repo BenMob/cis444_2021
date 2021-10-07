@@ -1,8 +1,6 @@
 from flask import Flask,render_template,request
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 
-import datetime
-
 app = Flask(__name__)
 FlaskJSON(app)
 
@@ -42,20 +40,9 @@ def auth():
         return json_response(data=request.form)
 
 
-
 #Assigment 2
 @app.route('/ss1') #endpoint
 def ss1():
     return render_template('server_time.html', server_time= str(datetime.datetime.now()) )
-
-@app.route('/getTime') #endpoint
-def get_time():
-    return json_response(data={"password" : request.args.get('password'),
-                                "class" : "cis44",
-                                "serverTime":str(datetime.datetime.now())
-                            }
-                )
-
-
 app.run(host='0.0.0.0', port=80)
 
