@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request
 from flask_json import FlaskJSON, JsonError, json_response, as_json
+from datetime import datetime
 
 app = Flask(__name__)
 FlaskJSON(app)
@@ -43,6 +44,7 @@ def auth():
 #Assigment 2
 @app.route('/ss1') #endpoint
 def ss1():
-    return render_template('server_time.html', server_time= str(datetime.datetime.now()) )
+    return render_template('assignment2.html', page_name= str("Emoji Smileyzzz!"))
+
 app.run(host='0.0.0.0', port=80)
 
