@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page_name}}</title>
+</head>
+<body>
+    <div>
+        <div id="datetime">
+	    <h3 id="date"></h3>
+            <h1>{{page_name}}</h1>	  
+            <h3 id="time"></h3>
+        </div>
+        <div id="board">
+            <div id="emojie-table">
+                <div class="emojie-box">
+                    <p class="emojie" id="0"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="1"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="2"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="3"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="4"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="5"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="6"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="7"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="8"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="9"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="10"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="11"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="12"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="13"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="14"></p>
+                </div>
+                <div class="emojie-box">
+                    <p class="emojie" id="15"></p>
+                </div>
+            </div>
+            <div id="commands">
+                <div class="button" id="pause">Pause</div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body{
+            background: rgb(5, 14, 37);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(0, 213, 255);
+        }
+        #datetime{
+            display: flex;
+            justify-content: space-around;
+            border-bottom: solid 1px rgb(0, 213, 255);
+            margin-bottom: 20px;
+        }
+
+        #board{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 10px;
+            
+        }
+
+        #commands{
+            width: 280px;
+            padding: 10px;
+        }
+
+        #emojie-table{
+            background: rgb(5, 14, 37);
+            padding: 10px;
+            border-radius: 10px;
+            width: 560px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 5px;
+            box-shadow: 0px 0px 10px 2px rgb(0, 213, 255);
+        }
+
+        .emojie-box{
+            border: solid 1px rgb(5, 122, 151);
+            border-radius: 10px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .emojie{
+            font-size: 80px;
+            
+        }
+
+        .emojie:hover{
+            z-index: 100;
+            position: fixed;
+            font-size: 200px;
+            cursor: pointer;
+        }
+
+        .button{
+            background-color: rgb(5, 122, 151);
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .button:hover{
+            background-color: rgb(5, 122, 151);
+        }
+    </style>
+    
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+
+    // Shuffle emojies using Durstenfeld's shuffle algorithm
+    function shuffle(emojie_list) {
+        for (let i = emojie_list.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = emojie_list[i];
+            emojie_list[i] = emojie_list[j];
+            emojie_list[j] = temp;
+        }
+    }
+
+    // Loads emojies on the creen
+    function loadEmojies(emojie_list){
+        for (let id = 0; id < emojie_list.length; id++){
+            $(`#${id}`).html(emojie_list[id]);
+        }
+    }
+
+    // Main function
+    function main() {
+        let emojie_list = [
+            "&#128526", "&#128525", "&#128521", "&#128514", "&#128540", "&#128536", "&#129297", "&#128523",
+            "&#128513", "&#128522", "&#128539", "&#128538", "&#128563", "&#128537", "&#128518", "&#128512"
+        ];
+        loadEmojies(emojie_list);
+
+        // Pause button logic
+        let isPaused = false;
+        $("#pause").on("click", () => {
+            if(isPaused){
+                isPaused = false;
+                $("#pause").html("Pause");
+            }else{
+                isPaused = true;
+                $("#pause").html("Resume");
+            }
+        })
+
+        // Animation
+        setInterval(() => {
+            if(!isPaused){
+                shuffle(emojie_list);
+                loadEmojies(emojie_list);
+            }
+
+            $("#date").html(() => {return new Date().toLocaleDateString()});
+            $("#time").html(() => { return new Date().toLocaleTimeString()});
+
+        }, 100);
+    }
+
+    main();
+
+</script>
+</body>
+</html>
