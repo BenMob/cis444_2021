@@ -7,8 +7,8 @@ class Transaction():
 
     def __init__(self, id, item_id, buyer_id, timestamp):
         self.__id = id
-        self.__book_id = book_id
         self.__item_id = item_id
+        self.__buyer_id = buyer_id
         self.__timestamp = timestamp
 
     def get_id(self):
