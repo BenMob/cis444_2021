@@ -178,3 +178,4 @@ flycheck_*.el
 # secret
 *.json
 secrets.json
+db_admin.py
