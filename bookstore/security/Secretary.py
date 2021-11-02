@@ -26,13 +26,15 @@ class Secretary:
 
     def hash_password(self, password: str) -> str:
         '''Uses bcrypt to hash password'''
-
+    
         salt = bcrypt.gensalt(rounds=10)
         return bcrypt.hashpw(bytes(password, 'utf-8'), salt)
+     
 
     def check_password(self, password: str, hashed_password) -> bool:
         '''Uses bcrypt to check password'''
 
+        hashed_password = hashed_password.encode("utf-8")        
         return bcrypt.checkpw(bytes(password, 'utf-8'), hashed_password)
     
     
