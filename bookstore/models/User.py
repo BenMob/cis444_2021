@@ -9,7 +9,7 @@ class User:
     def __init__(self, id, fname, lname, username, password, created_at):
         self.__id = id
         self.__first_name = fname
-        self.__last_name = last_name
+        self.__last_name = lname
         self.__username = username
         self.__password = password
         self.__created_at = created_at

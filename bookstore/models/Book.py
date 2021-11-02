@@ -2,15 +2,15 @@ class Book:
     __id = None
     __title = None
     __authors = None
-    __cover = None
     __price = None
+    __cover = None
 
     def __init__(self, id, title, authors, cover, price):
         self.__id = id
         self.__title = title
         self.__authors = authors
-        self.__cover = cover
         self.__price = price
+        self.__cover = cover
 
     def get_id(self):
         return self.__id
