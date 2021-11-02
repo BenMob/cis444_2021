@@ -1,72 +1,44 @@
-import jwt
-import json
-from flask import Flask, render_template, jsonify, request
-from security import DatabaseConn, Secretary
+from flask import Flask, Blueprint ,render_template, jsonify, request
+from security import Database, Queries
+from controllers import UserController, BookController, TransactionController
 
+# Sets up app and db
 app = Flask(__name__, template_folder="templates")
-db_conn1 = DatabaseConn.getInstance()
-secretary = Secretary()
+db_conn = Database.get_connection()
+queries = Queries(db_conn)
+user_controller = UserController(queries)
+book_controller = BookController(queries)
+#transaction_controller = TransactionController(queries)
 
-data = {
-    "username": "Benjamin",
-    "pass": "password"
-}
-
-print("Encoding {}".format(str(data)))
-token = secretary.encode(data)
-print("Token: {}".format(token))
-
-print("\nDecoding the token")
-decoded = secretary.decode(token)
-print("Decoded: {}".format(decoded))
-
-
-print("Hashing password")
-hashed = secretary.hash_password(data.get("pass"))
-print("Hashed password: {}".format(hashed))
-print("\nChecking password")
-print(secretary.check_password(data.get("pass"), hashed))
-
-secrets = None
-with open("secrets.json") as file:
-    secrets = json.load(file)
-file.close()
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    
-    if request.method == 'POST':
-        jwt_str = jwt.encode({"username": "benjamin"}, secrets.get('jwt_key'), algorithm="HS256")
-        return jsonify({"jwt": jwt_str})
-    else:
-        return render_template("login.html", page_name="Login")
-
-@app.route("/expose", methods=["POST"])
-def expose():
-    token = request.args.get("jwt")
-    return jsonify(jwt.decode(token, secrets.get('jwt_key'), algorithms="HS256"))
-
-
-
-
-'''
 @app.route("/")
-@app.route("/store", methods=["GET"])
-def store():
-    return "store"
+def index(methods=["GET"]):
+    return render_template("index.html")
 
-@app.route("/home", methods=["GET"])
-def home():
-    return "home"
+@app.route("/login", methods=["POST"])
+def login():
+    username = request.json.get('username')
+    password = request.json.get('password')
+    return user_controller.login(username, password)
 
-@app.route("/signup", methods=["GET", "POST"])
-@app.route("/register", methods=["GET", "POST"])
+@app.route("/signup", methods=["POST"])
 def signup():
-    return "signup"
-
-@app.errorhandler(404)
-def not_found():
-    return "404 not found"
-'''
+    first_name = request.json.get("first_name")
+    last_name = request.json.get("last_name")
+    username = request.json.get("username")
+    password = request.json.get("password")
+    
+    return user_controller.signup(
+        first_name,
+        last_name,
+        username,
+        password
+    )
+    
+@app.route("/books", methods=["POST"])
+def books():
+    if(user_controller.isLoggedIn(request.json["access_token"])):
+        return book_controller.get_all()
+    return user_controller.notLoggedIn();
+    
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80)
