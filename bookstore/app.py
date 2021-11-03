@@ -8,7 +8,6 @@ db_conn = Database.get_connection()
 queries = Queries(db_conn)
 user_controller = UserController(queries)
 book_controller = BookController(queries)
-#transaction_controller = TransactionController(queries)
 
 @app.route("/")
 def index(methods=["GET"]):
@@ -36,9 +35,9 @@ def signup():
     
 @app.route("/books", methods=["POST"])
 def books():
-    if(user_controller.isLoggedIn(request.json["access_token"])):
+    if(user_controller.isLoggedIn(request.json.get("access_token"))):
         return book_controller.get_all()
-    return user_controller.notLoggedIn();
+    return user_controller.isNotLoggedIn();
     
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80)
