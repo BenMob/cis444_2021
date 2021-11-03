@@ -21,8 +21,13 @@ class Secretary:
 
     def decode(self, token: str) -> dict:
         '''Uses jwt to decode token'''
-
-        return jwt.decode(token, self.__jwt_key, algorithms=[self.__jwt_algorithm])
+        decoded = None
+        try:
+            decoded = jwt.decode(token, self.__jwt_key, algorithms=[self.__jwt_algorithm])
+        except:
+            return {}
+        
+        return decoded
 
     def hash_password(self, password: str) -> str:
         '''Uses bcrypt to hash password'''
