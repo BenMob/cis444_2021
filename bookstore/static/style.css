@@ -67,7 +67,7 @@ form{
 .buy-container{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 #book-shelf{
@@ -129,6 +129,6 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vw;
+    width: 350px;
     /*box-shadow: 0px 0px 10px 2px #333; */
 }

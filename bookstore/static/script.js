@@ -1,6 +1,6 @@
 $(document).ready(() => {
     access_token = undefined;
-    url_prefix = "http://52.53.208.94"
+    url_prefix = ""
 
     const renderLogin = () =>{
 	$("#login-component").show()
@@ -31,7 +31,7 @@ $(document).ready(() => {
           <div class="w3-container w3-center">
           <p>${title}</p>
           <div class="buy-container">
-            <strong>$${price}<strong>
+            <strong>$${price}</strong>
             <input type="button" value="Buy" class="button"></input>
           </div>
          </div>
