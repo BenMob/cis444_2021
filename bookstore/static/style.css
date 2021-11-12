@@ -76,6 +76,26 @@ form{
     grid-gap: 10px;
 }
 
+#popup-component{
+      position:fixed;
+      top:0;
+      left:0;
+      background:rgba(0,0,0,0.6);
+      z-index:5;
+      width:100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+#popup{
+    height: 200px;
+    width: 250px;
+    background:  #EAE8E7;
+}
+
+
 
 /* Footer */
 
