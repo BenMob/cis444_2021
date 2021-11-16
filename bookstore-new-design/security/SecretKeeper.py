@@ -4,7 +4,7 @@ class SecretKeeper:
     __secret_file_location = "./secrets.json"
     
     @staticmethod
-    def get(secret_key: str) -> str:
+    def get_from_local(secret_key: str) -> str:
         '''Share secrets from the secret file, given a secret key'''
 
         secret_file_location = "./secrets.json"
@@ -23,3 +23,7 @@ class SecretKeeper:
 
         return secrets;
         
+    @staticmethod
+    def get_from_cloud(secret_key: str) -> str:
+        '''Gets secret from the cloud, given a secret key'''
+        pass

@@ -18,7 +18,7 @@ class Database:
         if Database.__connection == None:
             try:
                 # Get database credentials
-                db_secrets = SecretKeeper.get("db_secrets")
+                db_secrets = SecretKeeper.get_from_local("db_secrets")
 
                 # Connect to database
                 self.__connect(db_secrets)

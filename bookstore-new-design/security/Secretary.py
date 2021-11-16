@@ -10,7 +10,7 @@ class Secretary:
     def __init__(self):
         '''Uses jwt and bcrypt to ecode and decode data as well as checking peoiple's passwords'''
 
-        jwt_secrets = SecretKeeper.get("jwt_secrets")
+        jwt_secrets = SecretKeeper.get_from_local("jwt_secrets")
         self.__jwt_key = jwt_secrets.get("key")
         self.__jwt_algorithm = jwt_secrets.get("algorithm")
 
