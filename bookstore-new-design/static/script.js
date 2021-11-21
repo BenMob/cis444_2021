@@ -94,7 +94,7 @@ $(document).ready(() => {
 	let pass = $("#log-password").val()
 	let data = {username: uname, password: pass}
 	
-	fetch(`${url_prefix}/login`,{
+	fetch(`/open_api/login`,{
 	    method: "POST",
 	    headers: {'Content-Type': 'application/json'},
 	    body: JSON.stringify(data)})

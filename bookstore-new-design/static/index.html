@@ -1,0 +1,65 @@
+{% extends 'partials/layout.html' %}
+{% block content %}
+<div id="login-component" class="page">
+  <div class="panel w3-animate-top">
+   <div>
+    <form id="login-form" action="">
+        <h2>Login</h2>
+        <div><label class="input-label" for="username">Username</label></div>
+        <div><input id="log-username" class="input" type="text" name="username" required/></div>
+        <div><label class="input-label" for="password">Password</label></div>
+        <div><input id="log-password"class="input" type="password" name="password" required/></div>
+        <div class="button-wrapper">
+	  <input id="nav-register" type="button" class="button"  value="Register"/>
+	  <input id="submit-login" class="button" type="submit" value="Login"/>
+	</div>
+      </form>
+     </div>
+    </div>
+</div>
+
+<div id="signup-component" class="page">
+  <div class="panel w3-animate-top">
+    <div>
+    <form id="signup-form" action="">
+      <h2>Register</h2>
+        <div><label class="input-label" for="first_name">First Name</label></div>
+        <div><input id="sign-fname" class="input" type="text" name="first_name" required/></div>
+        <div><label class="input-label" for="last_name">Last Name</label></div>
+        <div><input id="sign-lname" class="input" type="text" name="last_name" required/></div>
+        <div><label class="input-label" for="username">Username</label></div>
+        <div><input id="sign-username" class="input" type="text" name="username" required/></div>
+        <div><label class="input-label" for="password">Password</label></div>
+        <div><input id="sign-password" class="input" type="password" name="password" required/></div>
+        <div class="button-wrapper">
+	  <input id="nav-login" type="button" class="button"  value="Login"/>
+	  <input class="button" type="submit" value="Sign up"/>
+	</div>
+    </form>
+    </div>
+    </div>
+</div>
+
+<div id="bookstore-component" class="page">
+  <div id="book-shelf">
+    
+  </div>
+</div>
+
+<!--
+<div id="popup-component" class="">
+  <div id="popup">
+    <p1 id="popup-message"></p1>
+    <div id="popup-button-container">
+      <button id="close-popup" class="button" type="submit" value="Sign up"/>
+    </div>
+  </div>
+</div>-->
+<!--
+<div id="transactions-component" class="page">
+  <div id="transactions-list">
+    Transactions
+  </div>
+</div>
+  -->  
+{% endblock %}
