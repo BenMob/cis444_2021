@@ -1,6 +1,5 @@
 $(document).ready(() => {
     access_token = undefined;
-    url_prefix = ""
 
     const renderLogin = () =>{
 	$("#login-component").show()
@@ -41,7 +40,7 @@ $(document).ready(() => {
     }
 
     const renderBooks = () => {	
-	fetch(`${url_prefix}/books`,{
+	fetch("/secure_api/books",{
 	    method: "POST",
 	    headers: {'Content-Type': 'application/json'},
 	    body: JSON.stringify({access_token: access_token})
@@ -50,14 +49,16 @@ $(document).ready(() => {
 		return response.json();
 	    })
 	    .then((data) => {
+		console.clear()
+		console.log(data)
 		if(data.status != 200){
 		    alert(data.message)
 		}else{
+		    access_token = data.access_token
 		    $("#login-component").hide()
 		    $("#signup-component").hide()
 	            $("#bookstore-component").show()
 		    $("#nav-auth").show()
-		    
 		    $("#book-shelf").empty()
 		    data.books.forEach(book => {
 			div = createBookDiv(book.title, book.price, book.cover)
@@ -101,6 +102,8 @@ $(document).ready(() => {
 	    .then((response) => {
 		return response.json()
 	    }).then((data) => {
+		console.clear()
+		console.log(data)
 		if(data.status !== 200){
 		    $("#log-username").val("")
 		    $("#log-password").val("")
@@ -122,7 +125,7 @@ $(document).ready(() => {
 	let pass = $("#sign-password").val()
 	let data = {first_name: fname, last_name: lname, username: uname, password: pass}
 
-        fetch(`${url_prefix}/signup`,{
+        fetch("/open_api/signup",{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)})
