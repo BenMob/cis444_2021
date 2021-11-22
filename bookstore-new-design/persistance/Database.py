@@ -1,5 +1,5 @@
 import psycopg2
-from .SecretKeeper import SecretKeeper
+from tools.security import get_secrets
 
 class Database:
     '''Singleton Class To Manage Database Connection'''
@@ -18,7 +18,7 @@ class Database:
         if Database.__connection == None:
             try:
                 # Get database credentials
-                db_secrets = SecretKeeper.get_from_local("db_secrets")
+                db_secrets = get_secrets("db_secrets")
 
                 # Connect to database
                 self.__connect(db_secrets)
