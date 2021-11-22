@@ -1,5 +1,4 @@
-from flask import jsonify
-
+# Controls the Books Table
 class BookController:
 
     __queries = None
@@ -19,4 +18,4 @@ class BookController:
                 "price" : float(book.get_price())
             })
         
-        return jsonify(status=200, books=books, message="success")  
+        return {"status": 200, "books": books, "message": "success"}  

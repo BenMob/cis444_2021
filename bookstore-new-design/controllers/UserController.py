@@ -1,94 +1,94 @@
-from security import Secretary
-from flask import jsonify
+from tools.security import token_encoder, token_decoder, check_password, hash_password
+from tools.logging import logger
 
 class UserController:
     
     __queries = None
-    __secretary = None
     
     def __init__(self, queries):
         self.__queries = queries        
-        self.__secretary = Secretary()
         
     def login(self, username, password):
+        logger.debug("Trying to log a user in.")
         user_model = self.__queries.get_user_by_username(username)
-        
+
         # The User was found in the database
         if(not user_model):
+            logger.debug("The user was not found.")
             response = {
                 "status": 401,
                 "access_token": None,
                 "message": "This user does not exist."
             }
 
-            return jsonify(response)
-        
+            return response
+
+        logger.debug("User was found in the database.")
         # Wrong Password
-        if(not self.__secretary.check_password(password=password, hashed_password=user_model.get_password())):
-           response = {
+        if(not check_password(password=password, hashed_password=user_model.get_password())):
+            logger.debug("The password provided is incorrect.")
+            response = {
 	       "status": 403,
                "access_token": None,
                "message": "Wrong password."
-           }
+            }
+            return response
 
-           return jsonify(response)
-           
+        logger.debug("The password provided is correct.")
+        
         # User data
         user = {
             "id": user_model.get_id(),
             "first_name": user_model.get_first_name(),
             "last_name": user_model.get_last_name()
         }
-
+        
         # Response
         response = {
             "status": 200,
-            "access_token": self.__secretary.encode(user),
+            "access_token": token_encoder(user),
             "message": "success"
         }
 
-        return jsonify(response)
+        logger.debug("This user is authentic, giving them the newly created token.")
+        return response
            
     def signup(self, first_name, last_name, username, password):
+        '''Signup a user'''
         
+        logger.debug("Trying to register a new user.")
         user_model = self.__queries.get_user_by_username(username)
 
         # User already exist
         if(user_model):
+           logger.debug("Username already taken")
            response = {
                "status": 403,
-               "message": "Username already taken, please try another username"
+               "message": "Username already taken, please try another username."
            }
-           return jsonify(response)
+           return response
+        logger.debug("The username provided is available.")
+       
+        success = self.__queries.insert_user(fname=first_name, lname=last_name, username=username, password=hash_password(password))
 
-        success = self.__queries.insert_user(fname=first_name, lname=last_name, username=username, password=self.__secretary.hash_password(password))
+        # Account was created successfully
         if(success):
+           logger.debug("Successfully registered a new user.")
            response = {
                "status": 200,
                "message": "Thanks for creating an account with us, {}.".format(first_name)
            }
-           return jsonify(response)
+           return response
 
+        logger.debug("Something went wrong while trying to register the user.")
+        # Something went wrong and we could not create an account
         response = {
-	    "status": 200,
-            "message": "Oups!, something went wrong."
+	    "status": 403,
+            "message": "Oups! something went wrong, we couldn't create an account for you."
         }
 
-        return jsonify(response)
-        
-    def isLoggedIn(self, access_token):
-        data = self.__secretary.decode(access_token)
-        found = self.__queries.get_user_by_id(data.get("id"))
-        
-        if(found):
-            return True
+        return response
 
-        return False
-           
-    def isNotLoggedIn(self):
-        return jsonify({"status": 401, "message": "Please log in or create an account first."})
-           
-           
            
            
            
