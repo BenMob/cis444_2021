@@ -176,6 +176,5 @@ flycheck_*.el
 .dir-locals.el
 
 # secret
-*.json
 secrets.json
 db_admin.py
