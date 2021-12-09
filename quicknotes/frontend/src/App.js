@@ -69,15 +69,15 @@ function App() {
 
   /* Page Renderers */
   const renderHomePage = () => {
-    return <Home />
+    return <Home className={"w3-animate-zoom"}/>
   }
 
   const renderLoginPage = () => {
-    return <Login handleLogin={handleLogin} handleGoToSignup={handleGoToSignup}/>
+    return <Login handleLogin={handleLogin} handleGoToSignup={handleGoToSignup} className={"w3-animate-top"}/>
   }
 
   const renderSignupPage = () => {
-    return <Signup handleSignup={handleSignup} handleGoToLogin={handleGoToLogin} />
+    return <Signup handleSignup={handleSignup} handleGoToLogin={handleGoToLogin} className={"w3-animate-top"}/>
   }
 
   

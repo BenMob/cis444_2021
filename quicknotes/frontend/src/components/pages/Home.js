@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Home() {
+function Home({className}) {
     return (
-        <div className="w3-animate-top">
+        <div className={className}>
             <h1>Home Page</h1>
         </div>
     )
