@@ -27,6 +27,11 @@ const footerWrapperStyles = {
 }
 
 
+const testUser = {
+  firstName: "Benjamin",
+  lastName: "Ombeni"
+}
+
 function App() {
 
   /* States */
@@ -69,7 +74,7 @@ function App() {
 
   /* Page Renderers */
   const renderHomePage = () => {
-    return <Home className={"w3-animate-zoom"}/>
+    return <Home user={testUser} className={""}/>
   }
 
   const renderLoginPage = () => {
@@ -84,7 +89,7 @@ function App() {
   return (
     <div className="app-layout">
       <div style={navWrapperStyles}>
-        <NavBar isLoggedIn={isLoggedIn} navItems={[{label: "Logout", onClick: handleLogout}]} />
+        <NavBar isLoggedIn={isLoggedIn} navItems={[{label: "Logout", onClick: handleLogout}]} firstName={testUser.firstName} lastName={testUser.lastName} />
       </div>
       <div style={bodyWrapperStyles}>
         {isLoggedIn && renderHomePage()}
