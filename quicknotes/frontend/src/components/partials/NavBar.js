@@ -3,7 +3,7 @@ import uniqid from 'uniqid'
 import SecondaryButton from "../buttons/SecondaryButton"
 import logo from "../../images/logo.png"
 
-function NavBar({isLoggedIn, navItems}) {
+function NavBar({isLoggedIn, navItems, firstName, lastName}) {
 
     const containerStyles = {
         display: "grid",
@@ -13,14 +13,16 @@ function NavBar({isLoggedIn, navItems}) {
 
     const leftChild = {
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: "flex-start",
+        alignItems: "center",
+        paddingLeft: 10
     }
 
     const rightChild = {
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: "flex-end",
+        alignItems: "center",
+        paddingRight: 20
     }
 
     const renderNavItems = () => {
@@ -31,8 +33,11 @@ function NavBar({isLoggedIn, navItems}) {
         const items = navItems.map(item => {
             return <SecondaryButton key={() => uniqid()} label={item.label} onClick={item.onClick} className={"w3-animate-zoom"}/>
         })
-
         return items
+    }
+
+    const renderFirstAndLastName = () => {
+        return <small className={"w3-animate-zoom"}>{firstName + " " + lastName}</small>
     }
 
     return (
@@ -43,6 +48,7 @@ function NavBar({isLoggedIn, navItems}) {
             </div>
             <div style={rightChild}>
                 {isLoggedIn && renderNavItems()}
+                {isLoggedIn && renderFirstAndLastName()}
             </div>
         </div>
     )
