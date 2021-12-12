@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPlus} from '@fortawesome/free-solid-svg-icons'
 
 function PlusButton({onClick, className, style}) {
 
@@ -21,7 +23,7 @@ function PlusButton({onClick, className, style}) {
 
 	return (
 		<div style={containerStyles} className={className}>
-			<button onClick={onClick} onMouseDown={handleMouseEvent} onMouseUp={handleMouseEvent} onMouseLeave={handleMouseEvent} className={`w3-button w3-circle w3-border w3-light-gray w3-hover-light-gray  ${mouseDownState}`}><strong >+</strong></button>
+			<FontAwesomeIcon icon={faPlus} onClick={onClick} onMouseDown={handleMouseEvent} onMouseUp={handleMouseEvent} onMouseLeave={handleMouseEvent} className={`w3-circle w3-xxlarge ${mouseDownState}`} style={{cursor: "pointer"}}/>
 		</div>
 	)
 }
