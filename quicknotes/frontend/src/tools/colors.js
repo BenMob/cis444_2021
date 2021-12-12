@@ -6,8 +6,10 @@ const colors = {
   secondaryText: "black",
   primaryBorder: "lightGray",
   secondaryBorder: "#333",
-  white: "#f2f3f4"
+  white: "#f2f3f4",
 
+  /* component color */
+  folderColor: "#87CEFA"
 }
 
 export default colors;
