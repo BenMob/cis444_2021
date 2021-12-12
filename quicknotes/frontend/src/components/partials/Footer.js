@@ -10,7 +10,7 @@ function Footer() {
 
     return (
         <div style={footerStyle}>
-            <small>Build love & some code by Benjamin Ombeni</small>
+            <small>Ⓒ {new Date().getFullYear()} By <a href='https://www.linkedin.com/in/benmob/' target="_blank" rel="noreferrer">Benjamin Ombeni</a></small>
         </div>
     )
 }
