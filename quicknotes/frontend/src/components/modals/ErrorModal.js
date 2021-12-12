@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NoteStats() {
+function ErrorModal() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function NoteStats() {
     )
 }
 
-export default NoteStats
+export default ErrorModal
