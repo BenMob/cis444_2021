@@ -44,7 +44,7 @@ function NavBar({isLoggedIn, navItems, firstName, lastName}) {
         <div style={containerStyles}>
             <div style={leftChild}>
                 <div><img src={logo} alt="Logo"  style={{width: 30, height: 30, margin: 10}}/></div>
-                <div><h4><strong>q-notes</strong></h4></div>
+                <div><h4><strong>Quicknotes</strong></h4></div>
             </div>
             <div style={rightChild}>
                 {isLoggedIn && renderNavItems()}
