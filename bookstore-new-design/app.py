@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, jsonify
 from persistance import Database, Queries
 from tools.logging import logger
 from tools.security import token_required
@@ -46,7 +46,7 @@ def open_api(route_name):
         log += str(error) + "\n"
         log += traceback.format_exc()
         logger.error(log)
-        reponse = jsonify({"status": 500, "data": error_message})
+        response = jsonify({"status": 500, "data": error_message})
 
     # Return the response
     return response
