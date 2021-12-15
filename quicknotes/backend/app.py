@@ -1,8 +1,9 @@
-from flask import Flask, render_template, jsonify, g
+from flask import Flask, render_template, jsonify, send_from_directory, g
 from persistance import Database, Queries
 from tools.logging import logger
 from tools.security import token_required
 import traceback
+import os
 
 # Sets up app and db
 app = Flask(__name__, static_folder="../frontend/app")
@@ -19,11 +20,15 @@ def init_new_env():
     if 'queries' not in g:
         g.queries = Queries(db_conn)
 
-@app.route("/", methods=["GET"])
-def index():
+@app.route('/', defaults={'path': ''})
+@app.route("/<path:path>")
+def index(path):
     '''Renders index.html from static'''
     
-    return render_template("index.html")
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 @app.route(open_api_route, methods=["POST"])
 def open_api(route_name):
