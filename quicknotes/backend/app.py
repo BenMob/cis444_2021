@@ -6,7 +6,7 @@ import traceback
 import os
 
 # Sets up app and db
-app = Flask(__name__, static_folder="../frontend/app")
+app = Flask(__name__, static_folder="../frontend/build")
 db_conn = Database.get_connection()            # Connects to the database 
 open_api_route = "/open_api/<route_name>"      # Route format for open api
 secure_api_route = "/secure_api/<route_name>"  # Route format for secure api 
