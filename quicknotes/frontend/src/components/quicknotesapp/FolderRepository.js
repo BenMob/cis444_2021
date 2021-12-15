@@ -1,12 +1,12 @@
 import React from 'react'
 import PlusButton from '../buttons/PlusButton'
-import FolderButton from '../buttons/FolderButton'
+import Folder from './Folder'
 
-function FolderList({folders, openFolder, addFolder, deleteFolder}) {
+function FolderRepository({folders, openFolder, addFolder, deleteFolder}) {
 
     const renderFolders = () => {
         return folders.map(folder => {
-            return <FolderButton key={folder.id} onOpen={openFolder} onDelete={deleteFolder} id={folder.id} name={folder.name} className={"w3-animate-zoom"}/>
+            return <Folder key={folder.id} onOpen={openFolder} onDelete={deleteFolder} folder={folder} className={"w3-animate-zoom"}/>
         })
     }
 
@@ -23,4 +23,4 @@ function FolderList({folders, openFolder, addFolder, deleteFolder}) {
     )
 }
 
-export default FolderList
+export default FolderRepository
