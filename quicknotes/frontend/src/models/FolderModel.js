@@ -1,44 +1,25 @@
 import uniqid from 'uniqid'
+import sampleFolders from "../samples/folders.json"
 
 class FolderModel {
-    constructor(name){
+    constructor(name, userId){
         this.id = uniqid()
+        this.userId = userId
         this.name = name
-        this.notes = []
-    }
-
-    getName(){
-        return this.name
-    }
-
-    rename(name){
-        this.name = name
-    }
-
-    addNote(note){
-        if(typeof note !== 'object') return false
-        if(!note.hasOwnProperty('id')) return false
-        if(!note.hasOwnProperty('title')) return false
-        if(!note.hasOwnProperty('content')) return false
-
-        if(this.notes.length === 0){
-            this.notes.push(note)
-            return true
-        }else{
-            if(this.notes.includes(n => n.id === note.id)){
-                return false
-            }
-
-            return true
-        }
+        this.createdAt = Date.now()
     }
     
     literal(){
         return {
             id: this.id,
+            userId: this.userId,
             name: this.name,
-            notes: this.notes
+            createdAt: this.createdAt
         } 
+    }
+
+    static getSampleFolders(){
+        return sampleFolders
     }
 }
 
