@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, send_from_directory, g
+from flask import Flask, jsonify, send_from_directory, g
 from persistance import Database, Queries
 from tools.logging import logger
 from tools.security import token_required
@@ -22,7 +22,7 @@ def init_new_env():
 
 @app.route('/', defaults={'path': ''})
 @app.route("/<path:path>")
-def index(path):
+def serve(path):
     '''Renders index.html from static'''
     
     if path != "" and os.path.exists(app.static_folder + '/' + path):
