@@ -1,0 +1,173 @@
+body{
+    background-color: #EAE8E7;
+    color: black; 
+    font-family: Verdana, sans-serif;
+    font-weight: lighter;
+    padding: 0;
+    margin: 0;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+form{
+    width: 100%;
+}
+
+.page{
+    width: 100vw;
+    min-height: 80vh;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation Bar */
+.nav-bar{
+    background-color: #EAE8E7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /*border-bottom: solid 2px #041E42;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    with: 100%;
+    padding: 5px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.33)
+}
+
+.nav-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-title{
+    display: flex;
+    justify-content: center;
+    align-center: center;
+    font-size: 20px;
+}
+
+.nav-item{
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    border: solid 1px #EAE8E7;
+}
+
+.nav-item:hover{
+    border: solid 1px #C4932C;
+}
+
+#nav-auth{
+    border: solid 1px #A9C2AA;
+}
+
+.buy-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#book-shelf{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+#popup-component{
+      position:fixed;
+      top:0;
+      left:0;
+      background:rgba(0,0,0,0.6);
+      z-index:5;
+      width:100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+#popup{
+    background:  #EAE8E7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#popup-content{
+    margin: 20px;
+}
+
+#popup-button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+/* Footer */
+
+/* General Styles */
+.button{
+    background-color: #C4932C;
+    border: solid 1px  gray;
+    color: black;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    right: 5;
+    bottom: 5;
+    margin-left: 10px;
+}
+
+.button-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+}
+
+.button:hover{
+    border: solid 1px #C4932C;
+}
+
+.input{
+    background-color: #EAE8E7;
+    padding: 8px;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: solid 2px  #C4932C;
+}
+
+label{
+    margin-top: 10px;
+}
+
+.panel{
+    background-color: #041E42;
+    color: #EEE;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    /*box-shadow: 0px 0px 10px 2px #333; */
+}
