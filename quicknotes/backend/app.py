@@ -5,7 +5,7 @@ from tools.security import token_required
 import traceback
 
 # Sets up app and db
-app = Flask(__name__, template_folder="../frontend/app")
+app = Flask(__name__, static_folder="../frontend/app")
 db_conn = Database.get_connection()            # Connects to the database 
 open_api_route = "/open_api/<route_name>"      # Route format for open api
 secure_api_route = "/secure_api/<route_name>"  # Route format for secure api 
@@ -21,7 +21,7 @@ def init_new_env():
 
 @app.route("/", methods=["GET"])
 def index():
-    '''Renders index.html using render_template'''
+    '''Renders index.html from static'''
     
     return render_template("index.html")
 
