@@ -1,0 +1,20 @@
+[
+    {
+        "id": "folder1",
+        "userId": "current",
+        "name": "App Ideas",
+        "createdAt": 32453632456
+    },
+    {
+        "id": "folder2",
+        "userId": "current",
+        "name": "Life Hacks",
+        "createdAt": 56789765
+    },
+    {
+        "id": "folder3",
+        "userId": "current",
+        "name": "Recipes",
+        "createdAt": 324563214
+    }
+]

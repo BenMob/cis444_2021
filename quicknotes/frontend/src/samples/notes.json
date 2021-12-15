@@ -1,0 +1,26 @@
+[
+    {
+        "id": "note1",
+        "folderId": "folder1",
+        "userId": "current",
+        "title": "Fitness Tracker",
+        "content": "App that can track your workouts",
+        "createdAt": 897657890
+    },
+    {
+        "id": "note2",
+        "folderId": "folder1",
+        "userId": "current",
+        "title": "Weather App",
+        "content": "App that can tell you the local weather",
+        "createdAt": 5647890
+    },
+    {
+        "id": "note3",
+        "folderId": "folder2",
+        "userId": "current",
+        "title": "Eating Chips",
+        "content": "Use shopsticks for eating ships without making a mess on your fingers.",
+        "createdAt": 432536
+    }
+]
