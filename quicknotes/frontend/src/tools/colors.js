@@ -9,7 +9,8 @@ const colors = {
   white: "#f2f3f4",
 
   /* component color */
-  folderColor: "#87CEFA"
+  folderColor: "#87CEFA",
+  noteColor: "#FFFF88"
 }
 
 export default colors;
