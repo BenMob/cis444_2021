@@ -10,7 +10,7 @@ function FolderRepository({folders, openFolder, addFolder, deleteFolder}) {
         })
     }
 
-     const folderListContainer = {
+    const folderListContainer = {
         display: "flex",
         flexWrap: "wrap"
     }
