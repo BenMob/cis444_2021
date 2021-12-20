@@ -1,6 +1,7 @@
 /* Color Styles */
 const colors = {
-  primaryBg: "#314343",
+  //primaryBg: "#314343",
+  primaryBg: "#082F43",
   secondaryBg: "#FBFDB5",
   primaryText: "white",
   secondaryText: "black",

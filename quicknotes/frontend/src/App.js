@@ -14,7 +14,7 @@ import './App.css'
 const navWrapperStyles = {
   background: colors.primaryBg,
   color: colors.primaryText,
-  borderBottom: `solid 1px ${colors.primaryBorder}`,
+  borderBottom: `solid 1px ${colors.noteColor}`,
   position: "fixed",
   top: 0,
   width: "100%",
@@ -128,7 +128,7 @@ function App() {
   return (
     <div className="app-layout">
       {hasWarning() && renderMessage()}
-      <div style={navWrapperStyles}>
+      <div style={navWrapperStyles} className="">
         <NavBar isLoggedIn={isLoggedIn(user)} navItems={[{label: "Logout", onClick: handleLogout}]} firstName={user.firstName} lastName={user.lastName} />
       </div>
       <div style={bodyWrapperStyles}>
